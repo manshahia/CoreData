@@ -47,8 +47,7 @@ class ViewController: UIViewController {
                 {
                     if let username = result.value(forKey: "username") as? String
                     {
-                        result.setValue("Tanisha", forKey: "username")
-
+                        context.delete(result)
                         do
                         {
                             try context.save()
@@ -56,6 +55,15 @@ class ViewController: UIViewController {
                         catch {
                             print("Rename failsed")
                         }
+//                        result.setValue("Tanisha", forKey: "username")
+//
+//                        do
+//                        {
+//                            try context.save()
+//                        }
+//                        catch {
+//                            print("Rename failsed")
+//                        }
                         print(username)
                     }
                     if let age = result.value(forKey: "age") as? Int
