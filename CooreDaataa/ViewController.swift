@@ -26,7 +26,7 @@ class ViewController: UIViewController {
         
         do
         {
-            try context.save()
+           // try context.save()
             print("Values asaved")
             
         } catch {
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
         
         //Fetching DATA
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
+        request.predicate = NSPredicate(format: "username=%@", "Ravinder")
         request.returnsObjectsAsFaults = false
         
         do
