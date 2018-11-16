@@ -35,7 +35,7 @@ class ViewController: UIViewController {
         
         //Fetching DATA
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Users")
-        request.predicate = NSPredicate(format: "username=%@", "Ravinder")
+        request.predicate = NSPredicate(format: "username = %@", "Tanisah")
         request.returnsObjectsAsFaults = false
         
         do
@@ -47,8 +47,22 @@ class ViewController: UIViewController {
                 {
                     if let username = result.value(forKey: "username") as? String
                     {
+                        result.setValue("Tanisha", forKey: "username")
+
+                        do
+                        {
+                            try context.save()
+                        }
+                        catch {
+                            print("Rename failsed")
+                        }
                         print(username)
                     }
+                    if let age = result.value(forKey: "age") as? Int
+                    {
+                        print(age)
+                    }
+
                 }
             }
         } catch {
